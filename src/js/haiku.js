@@ -6,12 +6,12 @@ export class Haiku {
 }
 
   syllableCount(line) {
-    const words = line.split(" ");
+    const words = line.trim().split(" ");
     let syllables = 0;
     for (let i = 0; i < words.length; i++) {
       let numOfVowels = 0;
       let currentWord = words[i];
-      let vowelArr  = currentWord.match(/[aeiou]/g);
+      let vowelArr  = currentWord.match(/[aeiouy]/g);
       numOfVowels = parseInt(vowelArr.length);
       let letters = currentWord.split("");
       if (letters[letters.length - 1] == "e") {
@@ -26,6 +26,7 @@ export class Haiku {
 
   diphthong(letters, numOfVowels) {
     for (let j = 1; j < letters.length; j++) {
+      if (letters[j] == "o" && letters[j - 1] == "e" && letters[j + 1])
       if (this.vowelChecker(letters[j]) && this.vowelChecker(letters[j - 1])){
         numOfVowels--;
       }
@@ -34,7 +35,7 @@ export class Haiku {
   }
 
   vowelChecker(letter){
-    const vowels = ["a", "e", "i", "o", "u"];
+    const vowels = ["a", "e", "i", "o", "u", "y"];
     for (let i = 0; i < vowels.length; i++) {
       if(vowels[i] == letter){
         return true;

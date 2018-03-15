@@ -1,0 +1,10 @@
+#lineOne, #lineTwo, #lineThree {
+  width: 400px;
+}
+body{
+  background: skyblue;
+}
+
+#isHaiku, #noHaiku {
+  display: none;
+}
